@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# 🚢 Front Tracking — Shipment Tracking Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> The website customers and staff use to request imports, see costs, pay, and follow their containers on the way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧐 What is this, in plain words?
 
-## React Compiler
+This is the **part of the system you actually see and click** — the screens of the import & shipment tracking platform.
+(The "brain" behind it is the **[Tracking](https://github.com/HossamTohamy1/Tracking)** project.)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+With it you can:
 
-## Expanding the ESLint configuration
+- 🔐 **Sign up / log in**.
+- 📝 **Request an import** of a product.
+- 💰 See the **cost calculation** (shipping, customs, fees) before you commit.
+- 💳 **Pay online** by card (Stripe).
+- 📦 See your **containers** and **track** each one stage by stage.
+- 📊 Use a **dashboard** with an overview of everything.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+It also works as an installable app on your phone (PWA).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 👥 Who uses it?
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Who | What they can do |
+|---|---|
+| **Customer** | Request imports, view costs, pay, track containers |
+| **Staff / Admin** | Manage products, containers and requests from the dashboard |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ For developers
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Tech stack:** React 19 · TypeScript · Vite · React Router · Axios · Stripe (`@stripe/react-stripe-js`) · PWA (`vite-plugin-pwa`) · React Icons
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Main folders in `src/`:** `auth`, `dashboard`, `importRequests`, `costCalculations`, `payments`, `containers`, `tracking`, `products`, `components`, `pages`
+
+**Run locally**
+
+1. Install [Node.js](https://nodejs.org/) (LTS).
+2. Copy `.env.example` to `.env` and fill in:
+   - `VITE_API_BASE_URL` — URL of the Tracking API
+   - `VITE_STRIPE_PUBLISHABLE_KEY` — your Stripe publishable key
+3. Run:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+---
+
+## 🇪🇬 بالعربي
+
+ده الموقع اللي العميل بيشوفه ويدوس فيه في نظام تتبّع الشحنات: يسجّل دخول، ويقدّم طلب استيراد، ويشوف التكلفة، ويدفع بالكارت، ويتابع الكونتينر بتاعه خطوة بخطوة. وتقدر كمان تنزّله على الموبايل كأنه تطبيق.
